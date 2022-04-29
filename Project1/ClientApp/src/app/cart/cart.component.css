@@ -1,0 +1,43 @@
+.card{
+    height: 80vh;
+    margin:25px;
+    padding:25px;
+}
+
+.center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align:center;
+}
+
+
+.btn-toprod {
+  color: #fff;
+  background-color: #05A2D3;
+  border-color: #1861ac;
+  margin-right: 10px;
+  text-align: center;
+  width: 200px;
+  margin-top:50px;
+}
+
+.card-table {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-width:none;
+  word-wrap:break-word;
+  background-color:#fff;
+  background-clip:border-box;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.center .btn{
+    font-size:14px;
+    margin-top:20px;
+    font-weight:400;
+    padding:12px 72px;
+    border-radius:3px;
+}

@@ -1,0 +1,21 @@
+<body>
+  <div class="row">
+    <div class="poz col-md-4 offset-md-4">
+      <form [formGroup]="form" (ngSubmit)="onLogin()">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+
+          <input type="text" class="form-control" formControlName="email" />
+        </div>
+        <div class="mb-3">
+          <label for="pw" class="form-label">Password</label>
+          <input type="password" class="form-control" formControlName="pw" placeholder="Enter password" />
+        </div>
+        <input type="submit" value="Login" class="btn btn-primary" />
+      </form>
+    </div>
+  </div>
+
+  <div id="app"></div>
+</body>
+

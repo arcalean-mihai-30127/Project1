@@ -1,0 +1,106 @@
+<body>
+  <button type="submit" class="btn-addprod" (click)="addProduct()" *ngIf="visibleAdmin">+</button>
+  <div class="products-container">
+    <div class="row">
+      <div class="col col-sm-4" *ngFor="let product of products">
+        <div class="card">
+          <img [src]="product.image" alt="">
+          <h1 class="text-center">{{product.name}}</h1>
+          <h1 class="text-center">{{product.price}} RON </h1>
+          <button type="submit" class="btn btn-addcart" (click)="addCart(product.id)">Add to cart</button>
+          <button type="submit" class="btn-edit" (click)="editProduct(product.id)" [disabled]="visibleProductUpdate" *ngIf="visibleAdmin">Edit</button>
+          <button class="btn btn-danger" (click)="deleteProduct(product.id)" *ngIf="visibleAdmin">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  var my_constant_path = "assets/images/";
+</script>
+
+<div *ngIf="visibleProductAdd">
+  <form #product="ngForm" (ngSubmit)="onSub(product.value)">
+    <div class="table">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="name">Product: </label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" name="name" class="form-control" ngModel />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="description">Description: </label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" name="description" class="form-control" ngModel />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="price">Price: </label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" name="price" class="form-control" ngModel />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="image">Image: </label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" name="image" class="form-control" ngModel />
+        </div>
+      </div>
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary" />
+    <input value="Cancel" class="btn btn-primary" (click)="onCancel()" />
+  </form>
+</div>
+
+
+<div *ngIf="visibleProductUpdate">
+    <form #product="ngForm" (ngSubmit)="onUpdate(product.value)">
+      <div *ngFor="let product of products">
+        <div *ngIf="product.id==id">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="name">Product: {{id}} </label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" name="name" class="form-control" ngModel={{product.name}} />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="description">Description: </label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" name="description" class="form-control" ngModel="{{product.description}}" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="price">Price: </label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" name="price" class="form-control" ngModel={{product.price}} />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="image">Image: </label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" name="image" class="form-control" ngModel="{{product.image}}" />
+            </div>
+          </div>
+        </div>
+      </div>      
+      <input type="submit" value="Update" class="btn btn-primary" />
+      <input value="Cancel" class="btn btn-primary" (click)="onCancel()" />
+    </form>
+</div>

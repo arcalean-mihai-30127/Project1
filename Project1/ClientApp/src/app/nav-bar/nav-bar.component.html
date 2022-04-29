@@ -1,0 +1,23 @@
+<body>
+    <nav>
+      <label class="logo">Online store</label>
+      <ul>
+        <li><a href="/home"> Home </a></li>
+        <li><a href="/products"> Products </a></li>
+        <li><a href="/reviews"> Reviews </a></li>
+        <li><a href=""> Contact </a></li>
+        <li><a href=""> Account </a>
+            <ul *ngIf="isLoggedIn;else elseBlock" >
+              <li><a href="/logout"> Logout </a></li>
+            </ul>
+            <ng-template #elseBlock>
+              <ul>
+                <li><a href="/login"> Login </a></li>
+                <li><a href="/register"> Register </a></li>                
+              </ul>
+            </ng-template>
+        </li>
+        <li *ngIf="isLoggedIn"><a href="/cart"> Cart </a></li>
+      </ul>
+    </nav>
+</body>
